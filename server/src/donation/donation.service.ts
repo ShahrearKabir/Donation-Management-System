@@ -11,15 +11,19 @@ export class DonationService {
     private readonly stripeService: StripeService,
     @InjectRepository(Donation)
     private donationRepository: Repository<Donation>,
-  ) {}
+  ) { }
 
   async createDonation(user: User, amount: number) {
     const donation = new Donation();
     donation.user = user;
-    donation.amount = amount;
+    donation.amount = amount / 100;
     await this.donationRepository.save(donation);
 
     const clientSecret = await this.stripeService.createPaymentIntent(amount);
     return { clientSecret };
+  }
+
+  findAll() {
+    return this.donationRepository.find();
   }
 }

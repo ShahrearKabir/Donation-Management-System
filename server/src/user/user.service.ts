@@ -20,7 +20,7 @@ export class UserService {
   }
 
   async findOne(email: string): Promise<User | undefined> {
-    return this.userRepository.findOne({ where: { email }, relations: ['roles'] });
+    return this.userRepository.findOne({ where: { email }, relations: ['roles'], select: ['id', 'email', 'password'] });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
