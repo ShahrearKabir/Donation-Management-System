@@ -13,6 +13,7 @@ export class StripeService {
     const paymentIntent = await this.stripe.paymentIntents.create({
       amount,
       currency: 'usd',
+      receipt_email: 'shahrear.k@gmail.com',
     });
     return paymentIntent.client_secret;
   }

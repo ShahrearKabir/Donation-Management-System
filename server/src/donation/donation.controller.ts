@@ -5,6 +5,7 @@ import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { RolesGuard } from 'src/auth/guard/roles.guard';
 import { Roles } from 'src/auth/guard/roles.decorator';
+import { CreateDonationDto } from './dto/create-donation.dto';
 
 @Controller('donation')
 export class DonationController {
@@ -14,10 +15,13 @@ export class DonationController {
   // @UseGuards(JwtAuthGuard, RolesGuard)
   // @Roles('DONOR') 
   @Post()
-  async createDonation(@Body() donationDto: { user: User; amount: number }) {
-    return this.donationService.createDonation(donationDto.user, donationDto.amount);
+  async createDonation(@Body() donationDto: CreateDonationDto) {
+    return this.donationService.createDonation(donationDto);
   }
 
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
   @Get()
   async findAll() {
     return this.donationService.findAll();

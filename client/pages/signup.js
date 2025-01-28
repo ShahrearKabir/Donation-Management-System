@@ -30,13 +30,13 @@ export default function Signup() {
     // );
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
+            <h2 className="text-xl font-bold mb-4">Sign Up</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="p-6 bg-white rounded shadow-md">
-                <h2 className="text-xl font-bold mb-4">Sign Up</h2>
                 <input {...register('email')} placeholder="Email" className="p-2 border rounded w-full mb-2" />
                 <input {...register('password')} type="password" placeholder="Password" className="p-2 border rounded w-full mb-2" />
                 <button className="bg-blue-500 text-white p-2 rounded w-full">Sign Up</button>
                 <hr />
-                <Link href='/login'>Login</Link>
+                <div className="flex justify-end mt-4"><span>already have an account?&nbsp; </span><b><Link href='/login'>Login</Link></b></div>
             </form>
         </div>
     )

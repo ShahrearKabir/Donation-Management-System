@@ -34,7 +34,7 @@ export default function CheckoutForm() {
     return (
         <form onSubmit={handleSubmit}>
             <PaymentElement />
-            <button type="submit" disabled={isProcessing}>
+            <button type="submit" disabled={isProcessing} className="mt-4 bg-green-500 text-white p-2 rounded">
                 {isProcessing ? 'Processing...' : 'Pay Now'}
             </button>
             {message && <div>{message}</div>}

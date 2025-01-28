@@ -8,6 +8,7 @@ import { DonationModule } from './donation/donation.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { StripeModule } from './stripe/stripe.module';
+import { FundModule } from './fund/fund.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { StripeModule } from './stripe/stripe.module';
     AuthModule,
     RoleModule,
     DonationModule,
-    StripeModule
+    StripeModule,
+    FundModule
   ],
   controllers: [AppController],
   providers: [AppService],

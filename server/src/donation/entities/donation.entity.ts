@@ -1,3 +1,4 @@
+import { Fund } from '../../fund/entities/fund.entity';
 import { User } from '../..//user/entities/user.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 
@@ -9,6 +10,12 @@ export class Donation {
   @Column()
   amount: number;
 
-  @ManyToOne(() => User, (user) => user.donations)
+  @ManyToOne(() => User, (user) => user.id)
   user: User;
+
+  @ManyToOne(() => Fund, (fund) => fund.id)
+  fund: Fund;
+
+  // @Column()
+  // userId: number;
 }

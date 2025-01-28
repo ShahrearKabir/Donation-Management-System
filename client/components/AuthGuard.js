@@ -11,7 +11,7 @@ export default function AuthGuard({ children, role }) {
         } else {
             const user = getUserFromToken();
             if (user?.roles.includes(role)) {
-                router.push('/');
+                router.push('/admin');
             }
         }
     }, []);
